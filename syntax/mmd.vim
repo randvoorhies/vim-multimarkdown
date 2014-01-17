@@ -1,7 +1,8 @@
 " Vim syntax file
 " Language:     Markdown
-" Maintainer:   Tim Pope <vimNOSPAM@tpope.org>
-" Filenames:    *.markdown
+" Original Author:   Tim Pope <vimNOSPAM@tpope.org>
+"   Fork Maintainer: Randolph Voorhies <voorhies@usc.edu>
+" Filenames:    *.markdown, *.mmd *.multimarkdown
 
 if exists("b:current_syntax")
   finish
@@ -85,7 +86,8 @@ syn region markdownCode matchgroup=markdownCodeDelimiter start="`" end="`" keepe
 syn region markdownCode matchgroup=markdownCodeDelimiter start="`` \=" end=" \=``" keepend contains=markdownLineStart
 syn region markdownCode matchgroup=markdownCodeDelimiter start="^\s*```.*$" end="^\s*```\ze\s*$" keepend
 
-syn region markdownMathJax start="\v\\\\\(" end="\v\\\)"
+syn region markdownMathJax start="\v\\\\\[" end="\v\\\]"
+syn region markdownMathJaxInline start="\v\\\\\(" end="\v\\\)"
 
 syn match markdownFootnote "\v\[#\w*:\w*\]"
 
@@ -114,7 +116,8 @@ hi def link markdownListMarker            htmlTagName
 hi def link markdownBlockquote            Comment
 hi def link markdownRule                  PreProc
 
-hi def link markdownMathJax               String
+hi def link markdownMathJax                String
+hi def link markdownMathJaxInline          String
 hi def link markdownFootnote               Comment
 
 hi def link markdownLinkText              htmlLink
